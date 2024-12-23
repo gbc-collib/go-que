@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net"
 	"sync"
 )
@@ -47,4 +48,12 @@ func (s *Server) loop() {
 	for {
 		select {}
 	}
+}
+
+func main() {
+	server := NewServer(Config{ListenAddr: ":5003"})
+    err := server.Start()
+    if err != nil {
+        fmt.Printf("Server Error: %v\n", err)
+    }
 }
